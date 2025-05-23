@@ -60,7 +60,21 @@
 
 <div class="container">
   <h2 class="title">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</h2>
-  <h3 class="title">BDTOPUP.COM — Trusted Diamond Topup</h3>
+  <h3 class="title">BDTOPUP.COM — বিশ্বস্ত Diamond Topup সার্ভিস</h3>
+  <div style="background:#e3f2fd;padding:15px;margin-top:10px;border-radius:8px;border:1px solid #90caf9;">
+    <p style="color:#000;">
+      ভাবছেন ডায়মন্ড নিবেন, কিন্তু বিশ্বস্ত পেজ পাচ্ছেন না?<br/>
+      <strong>বিশ্বস্ততার সাথে টপ-আপ দেওয়াই আমাদের মূল লক্ষ্য!</strong>
+    </p>
+    <ul style="color:#000;">
+      <li>✅ অল্প দামে সব সার্ভিস</li>
+      <li>✅ ৫ বছর ধরে বিশ্বস্ততার সাথে ব্যবসা</li>
+      <li>✅ কাস্টমার রিভিউ Available</li>
+      <li>✅ ইনস্ট্যান্ট অর্ডার সিস্টেম (UID + TrxID)</li>
+      <li>⏰ ডেলিভারি টাইম: মাত্র ৩০ সেকেন্ড</li>
+      <li>💸 পেমেন্ট: বিকাশ, নগদ, রকেট (Send Money)</li>
+    </ul>
+  </div>
 
   <div class="alert">⚠️ সতর্কতা: ভুল UID / TrxID দিলে অর্ডার বাতিল হতে পারে। আগে টাকা পাঠিয়ে TrxID দিন।</div>
 
@@ -141,12 +155,10 @@
     const pkg = document.getElementById('package').value;
     const trxid = document.getElementById('trxid').value;
     const time = new Date().toLocaleString();
-
     const data = {uid, pkg, trxid, time};
     let history = JSON.parse(localStorage.getItem("orders") || "[]");
     history.push(data);
     localStorage.setItem("orders", JSON.stringify(history));
-
     document.getElementById('successMsg').style.display = 'block';
     loadHistory();
   }
