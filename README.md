@@ -1,228 +1,175 @@
-# bdtopup-official <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <title>BDTOPUP.COM | Premium Order System</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BDTOPUP.COM</title>
   <style>
     body {
-      margin: 0; font-family: 'Noto Sans Bengali', sans-serif;
-      background: linear-gradient(to right, #8E2DE2, #4A00E0);
-      color: #fff;
+      font-family: 'Noto Sans Bengali', sans-serif;
+      background: linear-gradient(to right, #e3f2fd, #ffffff);
+      padding: 20px; margin: 0;
     }
     .container {
-      max-width: 600px;
-      margin: auto;
-      background: #ffffff;
-      color: #000;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.2);
-      margin-top: 40px;
+      max-width: 700px; margin: auto;
+      background: #ffffff; padding: 20px;
+      border-radius: 12px; box-shadow: 0 0 12px rgba(0,0,0,0.1);
     }
-    h1, h2 {
-      text-align: center;
-      color: #1E88E5;
+    .title { text-align: center; color: #1976d2; }
+    .section { margin-top: 20px; }
+    .input, select {
+      width: 100%; padding: 10px; margin-top: 8px;
+      border-radius: 6px; border: 1px solid #ccc;
     }
-    .bismillah {
-      text-align: center;
-      font-size: 22px;
-      font-weight: bold;
-      color: #4A00E0;
-      margin-bottom: 10px;
+    .btn {
+      margin-top: 15px; width: 100%;
+      background: #1976d2; color: white;
+      border: none; padding: 10px;
+      border-radius: 6px; cursor: pointer;
     }
-    select, input, button {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-    }
-    button {
-      background: linear-gradient(to right, #FF512F, #DD2476);
-      color: white;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .success-msg {
-      display: none;
-      background: #4CAF50;
-      color: white;
-      padding: 10px;
-      text-align: center;
-      border-radius: 5px;
-      margin-top: 10px;
+    .success {
+      display: none; background: #c8e6c9;
+      padding: 10px; border-radius: 6px;
+      margin-top: 10px; color: #256029;
     }
     .copy-box {
-      background: #f2f2f2;
-      padding: 10px;
-      border-radius: 6px;
-      text-align: center;
-      margin-bottom: 10px;
+      background: #fff3cd; padding: 10px;
+      border-radius: 6px; border: 1px solid #ffeeba;
+      margin-top: 10px;
+    }
+    .alert {
+      background: #ffebee; border: 1px solid #f44336;
+      padding: 10px; border-radius: 6px;
+      margin-bottom: 20px; color: #b71c1c;
+    }
+    .history {
+      background: #f4f4f4; padding: 10px;
+      border-radius: 6px; margin-top: 10px;
+    }
+    .helpline {
+      text-align: center; margin-top: 20px;
+    }
+    .helpline a {
+      background: #007bff; color: white;
+      padding: 10px 20px; border-radius: 6px;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <div class="bismillah">Ø¨ÙØ³Ù’Ù…Ù Ø§Ù„Ù„ÙŽÙ‘Ù‡Ù Ø§Ù„Ø±ÙŽÙ‘Ø­Ù’Ù…ÙŽÙ°Ù†Ù Ø§Ù„Ø±ÙŽÙ‘Ø­ÙÙŠÙ…Ù</div>
-  <h1>BDTOPUP.COM</h1>
-  <h2>à¦«à§à¦°à¦¿ à¦«à¦¾à§Ÿà¦¾à¦° à¦…à¦°à§à¦¡à¦¾à¦° à¦¸à¦¿à¦¸à§à¦Ÿà§‡à¦®</h2>
+  <h2 class="title">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</h2>
+  <h3 class="title">BDTOPUP.COM — Trusted Diamond Topup</h3>
 
-  <label>UID</label>
-  <input type="text" id="uid" placeholder="à¦†à¦ªà¦¨à¦¾à¦° UID à¦²à¦¿à¦–à§à¦¨">
+  <div class="alert">⚠️ সতর্কতা: ভুল UID / TrxID দিলে অর্ডার বাতিল হতে পারে। আগে টাকা পাঠিয়ে TrxID দিন।</div>
 
-  <label>à¦ªà§à¦¯à¦¾à¦•à§‡à¦œ à¦¸à¦¿à¦²à§‡à¦•à§à¦Ÿ à¦•à¦°à§à¦¨</label>
-  <select id="diamond">
-<option>25 à¦¡à¦¾à§Ÿà¦®à¦¨à§à¦¡ â€“ à§¨à§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>50 à¦¡à¦¾à§Ÿà¦®à¦¨à§à¦¡ â€“ à§©à§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>115 à¦¡à¦¾à§Ÿà¦®à¦¨à§à¦¡ â€“ à§­à§« à¦Ÿà¦¾à¦•à¦¾</option>
-<option>240 à¦¡à¦¾à§Ÿà¦®à¦¨à§à¦¡ â€“ à§§à§ªà§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>610 à¦¡à¦¾à§Ÿà¦®à¦¨à§à¦¡ â€“ à§©à§¬à§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>1240 à¦¡à¦¾à§Ÿà¦®à¦¨à§à¦¡ â€“ à§¬à§¯à§¯ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>2530 à¦¡à¦¾à§Ÿà¦®à¦¨à§à¦¡ â€“ à§§à§ªà§«à§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>5060 à¦¡à¦¾à§Ÿà¦®à¦¨à§à¦¡ â€“ à§¨à§¯à§¦à§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>10120 à¦¡à¦¾à§Ÿà¦®à¦¨à§à¦¡ â€“ à§¬à§¦à§¦à§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>à¦‰à¦‡à¦•à¦²à¦¿ à¦²à¦¾à¦‡à¦Ÿ â€“ à§©à§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>à¦‰à¦‡à¦•à¦²à¦¿ â€“ à§§à§©à§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>à¦®à¦¾à¦Ÿà¦²à¦¿ â€“ à§«à§®à§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>à¦²à§‡à¦­à§‡à¦² à¦†à¦ª à¦ªà¦¾à¦¶ â€“ à§§à§©à§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>à§¦.à§¯à§¯$ â€“ à§®à§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>à§§.à§¯à§¯$ â€“ à§§à§®à§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>à§¨.à§¯à§¯$ â€“ à§¨à§®à§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>à§©.à§¯à§¯$ â€“ à§©à§®à§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>à¦‡à¦­à§ à¦à¦•à§à¦¸à¦¸à§‡à¦¸ â€“ à§© à¦¦à¦¿à¦¨ â€“ à§¬à§¯ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>à¦‡à¦­à§ à¦à¦•à§à¦¸à¦¸à§‡à¦¸ â€“ à§­ à¦¦à¦¿à¦¨ â€“ à§§à§§à§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>à¦‡à¦­à§ à¦à¦•à§à¦¸à¦¸à§‡à¦¸ â€“ à§©à§¦ à¦¦à¦¿à¦¨ â€“ à§¨à§®à§­ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>à§« à¦¡à¦¾à§Ÿà¦®à¦¨à§à¦¡ â€“ à§§à§« à¦Ÿà¦¾à¦•à¦¾</option>
-<option>à§«à§¦ à¦¡à¦¾à§Ÿà¦®à¦¨à§à¦¡ â€“ à§¬à§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>à§­à§¦ à¦¡à¦¾à§Ÿà¦®à¦¨à§à¦¡ â€“ à§®à§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>à§§à§ªà§¦ à¦¡à¦¾à§Ÿà¦®à¦¨à§à¦¡ â€“ à§§à§­à§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>à§©à§«à§« à¦¡à¦¾à§Ÿà¦®à¦¨à§à¦¡ â€“ à§ªà§ªà§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>à§­à§¨à§¦ à¦¡à¦¾à§Ÿà¦®à¦¨à§à¦¡ â€“ à§®à§©à§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>à§§à§ªà§ªà§¦ à¦¡à¦¾à§Ÿà¦®à¦¨à§à¦¡ â€“ à§§à§®à§¯à§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>Level Up Pass â€“ à§§à§­à§¦ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>Weekly â€“ à§¨à§«à§¯ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>Monthly â€“ à§®à§¯à§¯ à¦Ÿà¦¾à¦•à¦¾</option>
-<option>BP Card â€“ à§©à§¯à§¯ à¦Ÿà¦¾à¦•à¦¾</option>
-</select>
+  <div class="section">
+    <label>UID:</label>
+    <input type="text" class="input" id="uid" placeholder="আপনার UID দিন" />
+    
+    <label>প্যাকেজ:</label>
+    <select class="input" id="package">
+      <option disabled selected>— বাংলাদেশ সার্ভার —</option>
+      <option>25 ডায়মন্ড – ২০ টাকা</option>
+      <option>50 ডায়মন্ড – ৩০ টাকা</option>
+      <option>115 ডায়মন্ড – ৭৫ টাকা</option>
+      <option>240 ডায়মন্ড – ১৪০ টাকা</option>
+      <option>610 ডায়মন্ড – ৩৬০ টাকা</option>
+      <option>1240 ডায়মন্ড – ৬৯৯ টাকা</option>
+      <option>2530 ডায়মন্ড – ১৪৫০ টাকা</option>
+      <option>5060 ডায়মন্ড – ২৯০০ টাকা</option>
+      <option>10120 ডায়মন্ড – ৬০০০ টাকা</option>
+      <option disabled>— উইকলি / মাসিক / লেভেল আপ —</option>
+      <option id="fridayOffer">উইকলি – ১৩০ টাকা</option>
+      <option>উইকলি লাইট – ৩০ টাকা</option>
+      <option>মাসিক – ৫৮০ টাকা</option>
+      <option>লেভেল আপ পাশ – ১৩০ টাকা</option>
+      <option disabled>— এয়ারড্রপ —</option>
+      <option>0.99$ – ৮০ টাকা</option>
+      <option>1.99$ – ১৮০ টাকা</option>
+      <option>2.99$ – ২৮০ টাকা</option>
+      <option>3.99$ – ৩৮০ টাকা</option>
+      <option disabled>— ইভু এক্সেস —</option>
+      <option>3 দিন – ৬৯ টাকা</option>
+      <option>7 দিন – ১১০ টাকা</option>
+      <option>30 দিন – ২৮৭ টাকা</option>
+      <option disabled>— ইন্দোনেশিয়া সার্ভার —</option>
+      <option>5 ডায়মন্ড – ১৫ টাকা</option>
+      <option>50 ডায়মন্ড – ৬০ টাকা</option>
+      <option>70 ডায়মন্ড – ৮০ টাকা</option>
+      <option>140 ডায়মন্ড – ১৭০ টাকা</option>
+      <option>355 ডায়মন্ড – ৪৪০ টাকা</option>
+      <option>720 ডায়মন্ড – ৮৩০ টাকা</option>
+      <option>1440 ডায়মন্ড – ১৮৯০ টাকা</option>
+      <option>Level Up Pass – ১৭০ টাকা</option>
+      <option>Weekly – ২৫৯ টাকা</option>
+      <option>Monthly – ৮৯৯ টাকা</option>
+      <option>BP Card – ৩৯৯ টাকা</option>
+    </select>
 
-<button onclick="toggleMode()" style="margin-top:10px;background:#444;">ðŸŒ™ Light/Dark à¦®à§‹à¦¡</button>
+    <label>TrxID:</label>
+    <input type="text" class="input" id="trxid" placeholder="TrxID দিন" />
 
-  <label>à¦Ÿà¦¾à¦•à¦¾</label>
-  <input type="text" id="amount" placeholder="à¦Ÿà¦¾à¦•à¦¾ à¦²à¦¿à¦–à§à¦¨">
+    <div class="copy-box">
+      পেমেন্ট নাম্বার: <strong id="payNum">01822769871</strong><br/>
+      <button class="btn" onclick="copyPayNum()">নম্বর কপি করুন</button>
+    </div>
 
-  <label>TrxID</label>
-  <input type="text" id="trxid" placeholder="à¦¬à¦¿à¦•à¦¾à¦¶ / à¦¨à¦—à¦¦ TrxID à¦¦à¦¿à¦¨">
-
-  <label>Server</label>
-  <select id="server">
-    <option>Bangladesh</option>
-    <option>Indonesia</option>
-  </select>
-
-  <div class="copy-box">
-    à¦¬à¦¿à¦•à¦¾à¦¶/à¦¨à¦—à¦¦ à¦¨à¦®à§à¦¬à¦°: <strong id="payNum">01822769871</strong><br>
-    <button onclick="copyNumber()">à¦•à¦ªà¦¿ à¦•à¦°à§à¦¨ + Send Money à¦•à¦°à§à¦¨</button>
+    <button class="btn" onclick="submitOrder()">✅ অর্ডার সাবমিট করুন</button>
+    <div class="success" id="successMsg">✅ আপনার অর্ডার সফলভাবে গ্রহণ করা হয়েছে!</div>
   </div>
 
-  <button onclick="placeOrder()">âœ… à¦…à¦°à§à¦¡à¦¾à¦° à¦•à¦°à§à¦¨</button>
+  <div class="section">
+    <h4>📜 অর্ডার হিস্টোরি</h4>
+    <div id="orderHistory" class="history">কোনো অর্ডার পাওয়া যায়নি।</div>
+  </div>
 
-  <div class="success-msg" id="successBox">âœ… à¦…à¦°à§à¦¡à¦¾à¦° à¦¸à¦«à¦² à¦¹à§Ÿà§‡à¦›à§‡!</div>
-
-<div id="historyBox" style="margin-top:30px; background:#f0f0f0; padding:15px; border-radius:8px; color:#000;">
-  <h3>ðŸ“œ à¦…à¦°à§à¦¡à¦¾à¦° à¦¹à¦¿à¦¸à§à¦Ÿà§‹à¦°à¦¿</h3>
-  <div id="historyList">à¦à¦–à¦¨à¦“ à¦•à§‹à¦¨à§‹ à¦…à¦°à§à¦¡à¦¾à¦° à¦ªà¦¾à¦“à§Ÿà¦¾ à¦¯à¦¾à§Ÿà¦¨à¦¿à¥¤</div>
+  <div class="helpline">
+    <a href="https://t.me/BDTOPUPCOM24" target="_blank">টপআপ এর যেই কোন সমস্যার সমাধান নিন</a>
+  </div>
 </div>
 
-
 <script>
-  function copyNumber() {
-    const text = document.getElementById("payNum").innerText;
-    navigator.clipboard.writeText(text);
-    alert("à¦¨à¦¾à¦®à§à¦¬à¦¾à¦° à¦•à¦ªà¦¿ à¦¹à§Ÿà§‡à¦›à§‡: " + text);
+  function copyPayNum() {
+    navigator.clipboard.writeText(document.getElementById('payNum').innerText);
+    alert('নাম্বার কপি হয়েছে!');
   }
 
-  function placeOrder() {
-    const uid = document.getElementById("uid").value;
-    const diamond = document.getElementById("diamond").value;
-    const amount = document.getElementById("amount").value;
-    const trxid = document.getElementById("trxid").value;
-    const server = document.getElementById("server").value;
+  function submitOrder() {
+    const uid = document.getElementById('uid').value;
+    const pkg = document.getElementById('package').value;
+    const trxid = document.getElementById('trxid').value;
+    const time = new Date().toLocaleString();
 
-    const message = `âœ… à¦¨à¦¤à§à¦¨ à¦…à¦°à§à¦¡à¦¾à¦°
-UID: ${uid}
-à¦ªà§à¦¯à¦¾à¦•à§‡à¦œ: ${diamond}
-à¦Ÿà¦¾à¦•à¦¾: ${amount}
-TrxID: ${trxid}
-Server: ${server}`;
+    const data = {uid, pkg, trxid, time};
+    let history = JSON.parse(localStorage.getItem("orders") || "[]");
+    history.push(data);
+    localStorage.setItem("orders", JSON.stringify(history));
 
-    const token = "<YOUR_BOT_ID>" + ":" + "<YOUR_BOT_TOKEN>";
-    const chatId = "6108340963";
-
-    fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chat_id: chatId, text: message })
-    }).then(res => {
-      if (res.ok) {
-  document.getElementById("successBox").style.display = "block";
-  const history = JSON.parse(localStorage.getItem("orderHistory") || "[]");
-  history.push({ uid, diamond, amount, trxid, server, time: new Date().toLocaleString() });
-  localStorage.setItem("orderHistory", JSON.stringify(history));
-  loadOrderHistory();
-        document.getElementById("successBox").style.display = "block";
-      }
-    });
+    document.getElementById('successMsg').style.display = 'block';
+    loadHistory();
   }
 
-function toggleMode() {
-  const body = document.body;
-  if (body.style.background === "black") {
-    body.style.background = "";
-    body.style.color = "";
-  } else {
-    body.style.background = "black";
-    body.style.color = "white";
+  function loadHistory() {
+    const history = JSON.parse(localStorage.getItem("orders") || "[]").reverse();
+    const html = history.map(o => `
+      <div style="margin-bottom:5px;background:#fff;padding:10px;border-radius:6px;">
+        UID: ${o.uid}<br>প্যাকেজ: ${o.pkg}<br>TrxID: ${o.trxid}<br><small>${o.time}</small>
+      </div>
+    `).join("");
+    document.getElementById('orderHistory').innerHTML = html || "কোনো অর্ডার পাওয়া যায়নি।";
   }
-}
 
-// Auto Friday offer
-document.addEventListener("DOMContentLoaded", () => {
-  const today = new Date().getDay();
-  if (today === 5) {
-    const diamondDropdown = document.getElementById("diamond");
-    for (let i = 0; i < diamondDropdown.options.length; i++) {
-      if (diamondDropdown.options[i].text.includes("à¦‰à¦‡à¦•à¦²à¦¿ â€“ à§§à§©à§¦ à¦Ÿà¦¾à¦•à¦¾")) {
-        diamondDropdown.options[i].text = "à¦‰à¦‡à¦•à¦²à¦¿ â€“ à§®à§¦ à¦Ÿà¦¾à¦•à¦¾ (à¦¶à§à¦•à§à¦°à¦¬à¦¾à¦° à¦…à¦«à¦¾à¦°)";
-      }
+  function checkFridayOffer() {
+    const today = new Date().getDay();
+    if (today === 5) {
+      document.getElementById("fridayOffer").textContent = "উইকলি – ৮০ টাকা (শুক্রবার অফার)";
     }
   }
 
-  loadOrderHistory();
-});
-
-function loadOrderHistory() {
-  const history = JSON.parse(localStorage.getItem("orderHistory") || "[]").reverse();
-  const historyList = document.getElementById("historyList");
-  if (!history.length) {
-    historyList.innerHTML = "à¦à¦–à¦¨à¦“ à¦•à§‹à¦¨à§‹ à¦…à¦°à§à¦¡à¦¾à¦° à¦ªà¦¾à¦“à§Ÿà¦¾ à¦¯à¦¾à§Ÿà¦¨à¦¿à¥¤";
-    return;
-  }
-  historyList.innerHTML = history.map(o => `
-    <div style='margin-bottom:10px;padding:10px;border-radius:6px;background:#fff;color:#000'>
-      <b>UID:</b> ${o.uid}<br>
-      <b>à¦ªà§à¦¯à¦¾à¦•à§‡à¦œ:</b> ${o.diamond}<br>
-      <b>à¦Ÿà¦¾à¦•à¦¾:</b> ${o.amount}<br>
-      <b>TrxID:</b> ${o.trxid}<br>
-      <b>Server:</b> ${o.server}<br>
-      <small>${o.time}</small>
-    </div>
-  `).join("");
-}
-
+  loadHistory();
+  checkFridayOffer();
 </script>
 
 </body>
